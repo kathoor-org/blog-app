@@ -5,3 +5,21 @@ http://localhost:8282/api/categories/
 pagination and sorting:
 -----------------------------
 http://localhost:8282/api/posts?pageSize=5&pageNo=1?column=title
+
+
+ security:
+    user:
+      name: sachin
+      password: welcome1
+      roles:
+      - ADMIN
+logging:
+  level:
+    org: 
+      springframework:
+        security: DEBUG
+        
+        	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
