@@ -1,6 +1,7 @@
 package com.bladerunner.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,7 @@ public class UserServiceImpl implements UserService {
 			UserDto dto = UserDto.builder().build();
 			BeanUtils.copyProperties(user, dto);
 			return dto;
-		}).toList();
+		}).collect(Collectors.toList());
 
 		return dtos;
 	}

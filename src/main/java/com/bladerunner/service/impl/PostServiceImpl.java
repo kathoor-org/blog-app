@@ -2,6 +2,7 @@ package com.bladerunner.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +95,7 @@ public class PostServiceImpl implements PostService {
 
 		dtos = allPosts.stream().map(post -> {
 			return convertPostToPostDto(post);
-		}).toList();
+		}).collect(Collectors.toList());
 
 		PostResponse postResponse = PostResponse.builder().build();
 		postResponse.setPosts(dtos);
@@ -124,7 +125,7 @@ public class PostServiceImpl implements PostService {
 		postDtos = postRepo.findByUser(user).stream().map(post -> {
 			PostDto dto = PostDto.builder().build();
 			return convertPostToPostDto(post);
-		}).toList();
+		}).collect(Collectors.toList());
 
 		return postDtos;
 	}
@@ -139,7 +140,7 @@ public class PostServiceImpl implements PostService {
 
 			PostDto dto = PostDto.builder().build();
 			return convertPostToPostDto(post);
-		}).toList();
+		}).collect(Collectors.toList());
 
 		return dtos;
 	}
@@ -152,7 +153,7 @@ public class PostServiceImpl implements PostService {
 		return posts.stream().map(post -> {
 
 			return convertPostToPostDto(post);
-		}).toList();
+		}).collect(Collectors.toList());
 	}
 
 	private PostDto convertPostToPostDto(Post post) {

@@ -1,6 +1,7 @@
 package com.bladerunner.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +83,7 @@ public class CategoryServiceImpl implements CategoryService {
 			CategoryDto dto = new CategoryDto();
 			BeanUtils.copyProperties(category, dto);
 			return dto;
-		}).toList();
+		}).collect(Collectors.toList());
 
 		return dtos;
 	}
