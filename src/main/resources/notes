@@ -13,11 +13,7 @@ http://localhost:8282/api/posts?pageSize=5&pageNo=1?column=title
       password: welcome1
       roles:
       - ADMIN
-logging:
-  level:
-    org: 
-      springframework:
-        security: DEBUG
+
         
         	<dependency>
 			<groupId>org.springframework.boot</groupId>
