@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bladerunner.entities.User;
 import com.bladerunner.payloads.ApiResponse;
 import com.bladerunner.payloads.UserDto;
+import com.bladerunner.security.CustomUserDetailsService;
 import com.bladerunner.service.UserService;
 
 @RestController
@@ -28,6 +29,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	CustomUserDetailsService customUserDetailsService;
 
 	@PostMapping("/")
 	public ResponseEntity<UserDto> saveUser(@Valid @RequestBody User user) {
@@ -43,6 +47,15 @@ public class UserController {
 		UserDto UserDto = null;
 		UserDto = userService.getUserById(id);
 		return new ResponseEntity<UserDto>(UserDto, HttpStatus.OK);
+
+	}
+
+	@GetMapping("/name/{email}")
+	public ResponseEntity<User> getUserByEmail(@PathVariable("email") String  email) {
+
+		System.out.println(email);
+		User savedUser= customUserDetailsService.loadUserByUsername(email);
+		return new ResponseEntity<User>(savedUser,HttpStatus.FOUND);
 
 	}
 
