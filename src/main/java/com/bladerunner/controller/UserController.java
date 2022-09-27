@@ -50,15 +50,6 @@ public class UserController {
 
 	}
 
-	@GetMapping("/name/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable("email") String  email) {
-
-		System.out.println(email);
-		User savedUser= customUserDetailsService.loadUserByUsername(email);
-		return new ResponseEntity<User>(savedUser,HttpStatus.FOUND);
-
-	}
-
 	@GetMapping("/")
 	public ResponseEntity<List<UserDto>> getAllUser() {
 		List<UserDto> users = null;
@@ -72,6 +63,7 @@ public class UserController {
 
 		UserDto UserDto = null;
 		UserDto = userService.updateUser(user, userId);
+	
 		return new ResponseEntity<UserDto>(UserDto, HttpStatus.OK);
 	}
 
