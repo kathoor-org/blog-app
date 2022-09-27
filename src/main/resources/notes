@@ -1,0 +1,7 @@
+http://localhost:8282/api/users/
+
+http://localhost:8282/api/categories/
+
+pagination and sorting:
+-----------------------------
+http://localhost:8282/api/posts?pageSize=5&pageNo=1?column=title
